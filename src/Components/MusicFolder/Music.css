@@ -1,0 +1,16 @@
+.Music_section .music_box{
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.Music_section .music_box img{
+  max-width: 25rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.Music_section .music_box .buttons_Box .icons{
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
