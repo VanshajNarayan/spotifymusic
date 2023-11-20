@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Music.css";
 import {
   MdSkipPrevious,
@@ -10,6 +10,21 @@ import {
 
 const Music = () => {
   const [show, setShow] = useState(false);
+  let [audioNum, setAudioNum] = useState(0);
+
+  const audioArr = [
+    "Audios/Audio1.mp3", "Audios/Audio2.mp3", "Audios/Audio3.mp3", "Audios/Audio4.mp3", "Audios/Audio5.mp3",
+    "Audios/Audio6.mp3", "Audios/Audio7.mp3", "Audios/Audio8.mp3", "Audios/Audio9.mp3"
+  ];
+
+  useEffect(() => {
+    if (audioNum !== 0 && audioNum < 9) {
+      const Music = document.querySelector(".audio");
+      console.log(Music);
+      console.log(audioNum);
+      Music.play();
+    };
+  }, [audioNum]);
 
   const handlePlayButton = () => {
     const Music = document.querySelector(".audio");
@@ -18,9 +33,27 @@ const Music = () => {
   };
 
   const handlePauseButton = () => {
-    const Musics = document.querySelector(".audio");
-    Musics.pause();
+    const Music = document.querySelector(".audio");
+    Music.pause();
     setShow(!show);
+  };
+
+  const handleNextButton = () => {
+    if (audioNum <= 9) {
+      setAudioNum(++audioNum);
+      if (show === false) {
+        setShow(!show);
+      };
+    };
+  };
+
+  const handlePreviousButton = () => {
+    if (audioNum >= 0) {
+      setAudioNum(--audioNum);
+      if (show === false) {
+        setShow(!show);
+      };
+    };
   };
 
   return (
@@ -32,9 +65,9 @@ const Music = () => {
             alt="Album"
             width="100%"
           />
-          <audio src="Audios/Audio9.mp3" className="audio" ></audio>
+          <audio src={audioArr[audioNum]} className="audio" ></audio>
           <div className="buttons_Box">
-            <MdSkipPrevious className="icons" />
+            <MdSkipPrevious className="icons" onClick={handlePreviousButton} />
             {show === true ? (
               <MdOutlinePause
                 className="icons"
@@ -43,7 +76,7 @@ const Music = () => {
             ) : (
                 <MdPlayArrow className="icons" onClick={handlePlayButton} />
             )}
-            <MdSkipNext className="icons" />
+            <MdSkipNext className="icons" onClick={handleNextButton} />
           </div>
         </div>
       </section>
