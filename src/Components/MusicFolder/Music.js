@@ -18,12 +18,14 @@ const Music = () => {
   ];
 
   useEffect(() => {
-    if (audioNum !== 0 && audioNum < 9) {
-      const Music = document.querySelector(".audio");
-      console.log(Music);
-      console.log(audioNum);
+    const Music = document.querySelector(".audio");
+    if (audioNum === 0 && show === true) {
       Music.play();
     };
+    if (audioNum !== 0 && audioNum < 9) {
+      Music.play();
+    };
+    // eslint-disable-next-line
   }, [audioNum]);
 
   const handlePlayButton = () => {
@@ -39,7 +41,7 @@ const Music = () => {
   };
 
   const handleNextButton = () => {
-    if (audioNum <= 9) {
+    if (audioNum <= 7) {
       setAudioNum(++audioNum);
       if (show === false) {
         setShow(!show);
@@ -48,7 +50,7 @@ const Music = () => {
   };
 
   const handlePreviousButton = () => {
-    if (audioNum >= 0) {
+    if (audioNum > 0) {
       setAudioNum(--audioNum);
       if (show === false) {
         setShow(!show);
