@@ -1,0 +1,194 @@
+.HomeSection{
+  /* border: 2px solid red; */
+  height: 100%;
+}
+
+.HomeSection .firstBox{
+  position: relative;
+  /* border: 2px solid green; */
+  background: linear-gradient(to right , rgb(228, 92, 92), rgb(187, 84, 84));
+}
+
+.HomeSection .firstBox .searchBox{
+  position: relative;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+
+.HomeSection .firstBox .searchBox .searchIcon{
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  font-size: 1.5rem;
+}
+
+.HomeSection .firstBox .searchBox input{
+  max-width: 25rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-left: 3.8rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  border-radius: 20px;
+  background: #ffffffb7;
+  letter-spacing: 0.1rem;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section{
+  /* border: 2px solid yellow; */
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2rem;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .textPart{
+  /* border: 2px solid rgb(0, 225, 255); */
+  padding: 1rem;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .textPart .textPartHeading{
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .textPart .textPartPara{
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #a6a6a6;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .textPart .playBtn{
+  max-width: 14rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  padding: 0.5rem 2.1rem;
+  margin-right: 2rem;
+  text-transform: uppercase;
+  border-radius: 20px;
+  border: 4px solid #03C988;
+  cursor: pointer;
+  background-color: #03C988;
+  color: #fff;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .textPart .followBtn{
+  max-width: 14rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  padding: 0.5rem 2.1rem;
+  text-transform: uppercase;
+  border-radius: 20px;
+  border: 4px solid #03C988;
+  cursor: pointer;
+  color: #03C988;
+  background: none;
+}
+
+.HomeSection .firstBox .textAndPhoto_Section .imagePart img{
+  max-width: 20rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.HomeSection .secondBox{
+  margin-top: 1rem;
+  padding-left: 2rem;
+  /* border: 2px solid red; */
+}
+
+.HomeSection .secondBox .headingPopular{
+  color: #03C988;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}
+
+.HomeSection .secondBox .songBox{
+  /* border: 2px solid red; */
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.HomeSection .secondBox .songBox::-webkit-scrollbar{
+  display: none;
+}
+
+.HomeSection .secondBox .songBox .popularSongPoster{
+  /* border: 2px solid rgb(255, 241, 47); */
+  margin-right: 2rem;
+}
+
+.HomeSection .secondBox .songBox .popularSongPoster img{
+  width: 12.5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.HomeSection .secondBox .songBox .popularSongPoster .songName{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.HomeSection .secondBox .songBox .popularSongPoster .artistName{
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffffaa;
+}
+
+.HomeSection .thirdBox{
+  /* border: 2px solid red; */
+  margin-top: 1rem;
+  padding-left: 2rem;
+}
+
+.HomeSection .thirdBox .headingArtists{
+  color: #03C988;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}
+
+.HomeSection .thirdBox .artistPoster{
+  /* border: 2px solid green; */
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.HomeSection .thirdBox .artistPoster::-webkit-scrollbar{
+  display: none;
+}
+
+.HomeSection .thirdBox .artistPoster .artistPhoto{
+  margin-right: 3rem;
+}
+
+.HomeSection .thirdBox .artistPoster .artistPhoto img{
+  width: 9rem;
+  height: 10rem;
+  border-radius: 60px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+
+
+
+

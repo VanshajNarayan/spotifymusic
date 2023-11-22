@@ -1,0 +1,35 @@
+.main_section .thoda_main_Section{
+  max-width: 140rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+  padding: 0.6rem;
+}
+
+.main_section .thoda_main_Section .box1{
+  grid-row: 1 / 22;
+  background-color: #2B2A4C;
+  padding: 1rem;
+}
+
+.main_section .thoda_main_Section .box1 .playlist_title{
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+}
+
+.main_section .thoda_main_Section .box2{
+  grid-column: 2 / 6;
+  grid-row: 1 / 22;
+  background: linear-gradient(to right, #2B2A4C, #16152ad4);
+}
+
+.main_section .thoda_main_Section .box3{
+  grid-column: 1 / 6;
+  grid-row: 22 / 27;
+  background-color: #2B2A4C;
+}

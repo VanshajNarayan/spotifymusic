@@ -1,0 +1,22 @@
+nav{
+  margin-top: 3rem;
+}
+
+nav ul li a{
+  display: block;
+  text-decoration: none;
+  color: #a6a6a6;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+
+nav ul li a .icons{
+  font-size: 1.5rem;
+  margin-right: 1.4rem;
+}
+
+nav ul li .active{
+  color: #03C988;
+}
