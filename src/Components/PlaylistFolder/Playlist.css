@@ -14,12 +14,20 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  padding: 1rem;
+}
+
+.playlist_section .playlist_box .songs_box .imageAndTextPart{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .playlist_section .playlist_box .songs_box img{
   max-width: 5rem;
   object-fit: cover;
   object-position: center;
+  margin-right: 1rem;
 }
 
 .playlist_section .playlist_box .songs_box .songNameAndArtist{
@@ -27,7 +35,7 @@
 }
 
 .playlist_section .playlist_box .songs_box .songNameAndArtist .songName{
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: capitalize;
   color: #ffff;
@@ -35,7 +43,7 @@
 }
 
 .playlist_section .playlist_box .songs_box .songNameAndArtist .artistName{
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   font-weight: 600;
   text-transform: capitalize;
   color: #ffffff99;
@@ -43,7 +51,7 @@
 }
 
 .playlist_section .playlist_box .songs_box .play_icons{
-  padding: 0.2rem;
+  padding: 0.5rem;
   background-color: #fff;
   text-align: center;
   max-width: 2rem;

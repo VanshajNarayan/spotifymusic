@@ -9,30 +9,48 @@ import {
   MdLoop,
 } from "react-icons/md";
 import { AiOutlineSound } from "react-icons/ai";
+import { useData, useDispatch } from "../Components/ContextFolder/ContextOne";
 
 const MusicPlayer = () => {
+  const state = useData();
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handlePlay = () => {
+    const audio = document.querySelector("audio");
+    audio.play();
     setShow(!show);
   };
   const handlePause = () => {
+    const audio = document.querySelector("audio");
+    audio.pause();
     setShow(!show);
+  };
+  const handleNext = () => {
+    dispatch({ type: "playNextSong", payload: state.selectSong });
+    const audio = document.querySelector("audio");
+    audio.src = state.selectSong.audio;
+    audio.play();
+    console.log(state.selectSong, audio);
   };
   return (
     <>
       <section className="musicPlayer_Section">
         <div className="musicplayer_box">
+
+          
           <div className=" imgSongNameAndArtistName music_box">
             <img
-              src="https://images.pexels.com/photos/1885213/pexels-photo-1885213.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={state.selectSong.songPoster}
               alt="poster"
               width="100%"
             />
             <div className="songAndartistName">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">Vanshaj narayan</p>
+              <p className="songName"> {state.selectSong.songName} </p>
+              <p className="artistName"> {state.selectSong.artistName} </p>
             </div>
+            <audio src={state.selectSong.audio}></audio>
           </div>
+
           <div className="musicIons music_box">
             <MdLoop className="loopIcons" />
             <MdCloudDownload className="downloadIcon" />
@@ -40,7 +58,7 @@ const MusicPlayer = () => {
             {
               show === true ? <MdOutlinePause className="playIcon" onClick={handlePause} /> : <MdPlayArrow className="playIcon" onClick={handlePlay} />
             }
-            <MdSkipNext className="nextIcon"/>
+            <MdSkipNext className="nextIcon" onClick={() => handleNext()} />
           </div>
           <div className="progressBar music_box">
             <div className="startTime">0:00</div>

@@ -1,157 +1,61 @@
+import { useState } from "react";
 import "./Playlist.css";
-import { MdPlayArrow } from "react-icons/md";
+import { MdPlayArrow, MdOutlinePause } from "react-icons/md";
+import { useData, useDispatch } from "../ContextFolder/ContextOne";
 
 const Playlist = () => {
+  const state = useData();
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handlePause = () => {
+    setShow(!show);
+  };
+  const handleplay = () => {
+    setShow(!show);
+  };
+  const playlistSongPlay = (data) => {
+    const audio = document.querySelector("audio");
+    audio.src = data.audio;
+    audio.play();
+    dispatch({ type: "setMusicPlayerSong", payload: data });
+  };
   return (
     <>
       <section className="playlist_section">
         <div className="playlist_box">
 
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
+          {
+            state.playListData.map((data, index) => (
+
+              <div className="songs_box" key={index} onClick={() => playlistSongPlay(data)} >
+            <div className="imageAndTextPart">
+              <img
+                src={data.songPoster}
+                alt="poster"
+                width="100%"
+              />
+              <div className="songNameAndArtist">
+                <p className="songName"> {data.songName} </p>
+                <p className="artistName"> {data.artistName} </p>
+              </div>
             </div>
             <div className="play_icons">
-              <MdPlayArrow className="icons"/>
+              {show === true ? (
+                <MdOutlinePause className="icons" onClick={handlePause} />
+              ) : (
+                <MdPlayArrow className="icons" onClick={handleplay} />
+              )}
             </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
-          </div>
-          <div className="songs_box">
-            <img
-              src="https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="poster"
-              width="100%"
-            />
-            <div className="songNameAndArtist">
-              <p className="songName">oo sanam re</p>
-              <p className="artistName">vanshaj narayan</p>
-            </div>
-            <div className="play_icons">
-              <MdPlayArrow className="icons"/>
-            </div>
+            <audio src={data.audio}></audio>
           </div>
 
+            ))
+          }
+          
         </div>
       </section>
     </>
-  )
+  );
 };
 
 export default Playlist;
