@@ -14,6 +14,7 @@ const Playlist = () => {
     setShow(!show);
   };
   const playlistSongPlay = (data) => {
+    dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
     audio.src = data.audio;
     audio.play();

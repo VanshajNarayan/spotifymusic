@@ -17,11 +17,13 @@ export const ReducerFxOne = (state, action) => {
       const popularApi = selectedMusic.map((data) => data.popularSongs);
       const playLists = playListApi[0];
       const populars = popularApi[0];
+      const selectGana = playLists[0];
       return {
         ...state,
         selectedData: selectedMusic,
         playListData: playLists,
         popularData: populars,
+        selectSong: selectGana,
       };
 
     case "setMusicPlayerSong":
@@ -33,11 +35,15 @@ export const ReducerFxOne = (state, action) => {
     case "playNextSong":
       let nextData = null;
       if (state.playListData.includes(action.payload)) {
-        const indexNum = (state.playListData.indexOf(action.payload))
-        nextData = (state.playListData[indexNum + 1]);
+        let indexNum = state.playListData.indexOf(action.payload);
+        if (indexNum !== 9) {
+          nextData = state.playListData[indexNum + 1];
+        };
       } else if (state.popularData.includes(action.payload)) {
-        const indexNum = (state.popularData.indexOf(action.payload))
-        nextData = (state.popularData[indexNum + 1]);
+        let indexNum = state.popularData.indexOf(action.payload);
+        if (indexNum !== 19) {
+          nextData = state.popularData[indexNum + 1];
+        };
       };
       if (nextData !== null) {
         return {
@@ -47,7 +53,42 @@ export const ReducerFxOne = (state, action) => {
       };
 
       // eslint-disable-next-line
+    case "setPlayIcon":
+      return {
+        ...state,
+        icons: true,
+      };
+
+      // eslint-disable-next-line
+    case "setPauseIcon":
+      return {
+        ...state,
+        icons: false,
+      };
+
+      // eslint-disable-next-line
+    case "playPreviousSong":
+      let nextDataSong = null;
+      if (state.playListData.includes(action.payload)) {
+        let indexNum = state.playListData.indexOf(action.payload);
+        if (indexNum > 0) {
+          nextDataSong = state.playListData[indexNum - 1];
+        };
+      } else if (state.popularData.includes(action.payload)) {
+        let indexNum = state.popularData.indexOf(action.payload);
+        if (indexNum > 0) {
+          nextDataSong = state.popularData[indexNum - 1];
+        };
+      };
+      if (nextDataSong !== null) {
+        return {
+          ...state,
+          selectSong: nextDataSong,
+        };
+      };
+
+      // eslint-disable-next-line
     default:
       return state;
-  }
+  };
 };

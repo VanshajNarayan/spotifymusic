@@ -8,8 +8,12 @@ const Home = () => {
   const artistpic = (state.allMusicData.map((data) => data.photo));
   const handleArtist = (photo) => {
     dispatch({ type: "setMusic", payload: photo });
+    if (state.icons === true) {
+      dispatch({ type: "setPauseIcon" });
+    };
   };
   const popularSongPlay = (data) => {
+    dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
     audio.src = data.audio;
     audio.play();

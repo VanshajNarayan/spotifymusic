@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./MusicPlayer.css";
 import {
   MdSkipPrevious,
@@ -14,23 +13,55 @@ import { useData, useDispatch } from "../Components/ContextFolder/ContextOne";
 const MusicPlayer = () => {
   const state = useData();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
   const handlePlay = () => {
+    dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
     audio.play();
-    setShow(!show);
   };
   const handlePause = () => {
+    dispatch({ type: "setPauseIcon" });
     const audio = document.querySelector("audio");
     audio.pause();
-    setShow(!show);
   };
   const handleNext = () => {
     dispatch({ type: "playNextSong", payload: state.selectSong });
-    const audio = document.querySelector("audio");
-    audio.src = state.selectSong.audio;
-    audio.play();
-    console.log(state.selectSong, audio);
+    let newData = null;
+    if (state.playListData.includes(state.selectSong)) {
+      let indexNum = state.playListData.indexOf(state.selectSong);
+      if (indexNum !== 9) {
+        newData = state.playListData[indexNum + 1];
+      };
+    } else if (state.popularData.includes(state.selectSong)) {
+      let indexNum = state.popularData.indexOf(state.selectSong);
+      if (indexNum !== 19) {
+        newData = state.popularData[indexNum + 1];
+      };
+    };
+    if (newData !== null) {
+      const audio = document.querySelector("audio");
+      audio.src = newData.audio;
+      audio.play();
+    };
+  };
+  const handlePrevious = () => {
+    dispatch({ type: "playPreviousSong", payload: state.selectSong });
+    let newData = null;
+    if (state.playListData.includes(state.selectSong)) {
+      let indexNum = state.playListData.indexOf(state.selectSong);
+      if (indexNum > 0) {
+        newData = state.playListData[indexNum - 1];
+      };
+    } else if (state.popularData.includes(state.selectSong)) {
+      let indexNum = state.popularData.indexOf(state.selectSong);
+      if (indexNum > 0) {
+        newData = state.popularData[indexNum - 1];
+      };
+    };
+    if (newData !== null) {
+      const audio = document.querySelector("audio");
+      audio.src = newData.audio;
+      audio.play();
+    };
   };
   return (
     <>
@@ -54,9 +85,9 @@ const MusicPlayer = () => {
           <div className="musicIons music_box">
             <MdLoop className="loopIcons" />
             <MdCloudDownload className="downloadIcon" />
-            <MdSkipPrevious className="prevIcon" />
+            <MdSkipPrevious className="prevIcon" onClick={() => handlePrevious()} />
             {
-              show === true ? <MdOutlinePause className="playIcon" onClick={handlePause} /> : <MdPlayArrow className="playIcon" onClick={handlePlay} />
+              state.icons === true ? <MdOutlinePause className="playIcon" onClick={handlePause} /> : <MdPlayArrow className="playIcon" onClick={handlePlay} />
             }
             <MdSkipNext className="nextIcon" onClick={() => handleNext()} />
           </div>
