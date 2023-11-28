@@ -76,7 +76,7 @@
 }
 
 .musicPlayer_Section .musicplayer_box .progressBar .parentProgress .childProgress{
-  width: 30%;
+  width: 0%;
   height: 0.5rem;
   background-color: #b51111;
   border-radius: 2rem;

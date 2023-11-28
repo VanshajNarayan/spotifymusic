@@ -47,7 +47,6 @@ const Playlist = () => {
                 <MdPlayArrow className="icons" onClick={handleplay} />
               )}
             </div>
-            <audio src={data.audio}></audio>
           </div>
 
             ))

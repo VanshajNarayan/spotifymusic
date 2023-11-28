@@ -6,12 +6,18 @@ const Home = () => {
   const state = useData();
   const dispatch = useDispatch();
   const artistpic = (state.allMusicData.map((data) => data.photo));
+
+  // ! function for artist change
   const handleArtist = (photo) => {
     dispatch({ type: "setMusic", payload: photo });
     if (state.icons === true) {
       dispatch({ type: "setPauseIcon" });
     };
+    const audio = document.querySelector("audio");
+    audio.pause();
   };
+
+  // ! function for popular song play:-
   const popularSongPlay = (data) => {
     dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
@@ -19,6 +25,8 @@ const Home = () => {
     audio.play();
     dispatch({ type: "setMusicPlayerSong", payload: data });
   };
+
+  // ! jsx part
   return (
     <>
       <section className="HomeSection">
@@ -61,7 +69,6 @@ const Home = () => {
               />
               <p className="songName"> {data.songName} </p>
               <p className="artistName"> {data.artistName} </p>
-              <audio src={data.audio}></audio>
             </div>
 
               ))
