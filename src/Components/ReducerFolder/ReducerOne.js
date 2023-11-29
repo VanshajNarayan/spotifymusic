@@ -11,6 +11,7 @@ export const ReducerFxOne = (state, action) => {
         selectSong: action.payload[0].playLists[0],
       };
 
+      // eslint-disable-next-line
     case "setMusic":
       const selectedMusic = state.allMusicData.filter((data) => data.photo === action.payload);
       const playListApi = selectedMusic.map((data) => data.playLists);
@@ -85,6 +86,16 @@ export const ReducerFxOne = (state, action) => {
           ...state,
           selectSong: nextDataSong,
         };
+      };
+
+      // eslint-disable-next-line
+    case "searchSong":
+      let playListSearchedSongs = state.playListData.filter(data => data.songName.includes(action.payload));
+      let popularSearchedSongs = state.popularData.filter(data => data.songName.includes(action.payload));
+      return {
+        ...state,
+        popularSearchSong: popularSearchedSongs,
+        playlistSearchSong: playListSearchedSongs,
       };
 
       // eslint-disable-next-line

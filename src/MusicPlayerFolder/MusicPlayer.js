@@ -8,9 +8,13 @@ import {
   MdLoop,
 } from "react-icons/md";
 import { AiOutlineSound } from "react-icons/ai";
+import { CiVolumeMute } from "react-icons/ci";
 import { useData, useDispatch } from "../Components/ContextFolder/ContextOne";
+import { useState } from "react";
 
 const MusicPlayer = () => {
+  const [range, setRange] = useState(75);
+  const [show, setShow] = useState(false);
 
   const state = useData();
   const dispatch = useDispatch();
@@ -120,6 +124,30 @@ const MusicPlayer = () => {
     };
   };
 
+  // ! function to sound volume:-
+  function handleSoundVolume(e) {
+    const audio = document.querySelector("audio");
+    setRange(e.target.value);
+    if (show === false) {
+      audio.volume = e.target.value / 100;
+    };
+  };
+
+  // ! function to put sound:-
+  function handleLoudSound() {
+    setShow(!show);
+    const audio = document.querySelector("audio");
+    audio.volume = 0;
+  };
+
+  // ! function mute sound:-
+  function handleMute() {
+    setShow(!show);
+    const audio = document.querySelector("audio");
+    const inputRange = document.querySelector("#range");
+    audio.volume = inputRange.value / 100;
+  };
+
   // ! Jsx part
   return (
     <>
@@ -157,10 +185,10 @@ const MusicPlayer = () => {
             <div className="endTime">0:00</div>
           </div>
           <div className="soundBox music_box progressBar">
-            <AiOutlineSound className="soundIcon"/>
-            <div className="parentProgress">
-              <div className="childProgress"></div>
-            </div>
+            {
+              show === true ? <CiVolumeMute className="soundIcon" onClick={handleMute} /> : <AiOutlineSound className="soundIcon" onClick={handleLoudSound} />
+            }
+            <input type="range" id="range" min="0" max="100" value={range} onChange={handleSoundVolume} />
           </div>
         </div>
       </section>

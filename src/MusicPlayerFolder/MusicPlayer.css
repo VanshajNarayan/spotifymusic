@@ -86,3 +86,14 @@
   color: #fff;
   font-size: 1.6rem;
 }
+
+.musicPlayer_Section .musicplayer_box .soundBox #range{
+  max-width: 22rem;
+  width: 100%;
+  height: 0.5rem;
+  margin: 2rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  outline: none;
+  background: none;
+}

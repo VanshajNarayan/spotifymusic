@@ -1,0 +1,38 @@
+.search_section{
+  border: 2px solid red;
+  margin-top: 1rem;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  padding: 0.6rem;
+}
+
+.search_section .search_box{
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #c5c1c1;
+}
+
+.search_section .search_box img{
+  max-width: 5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.search_section .search_box .songNameAndartistName .songName{
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  color: #000;
+}
+
+.search_section .search_box .songNameAndartistName .artistName{
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}

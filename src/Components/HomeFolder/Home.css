@@ -1,11 +1,9 @@
 .HomeSection{
-  /* border: 2px solid red; */
   height: 100%;
 }
 
 .HomeSection .firstBox{
   position: relative;
-  /* border: 2px solid green; */
   background: linear-gradient(to right , rgb(228, 92, 92), rgb(187, 84, 84));
 }
 

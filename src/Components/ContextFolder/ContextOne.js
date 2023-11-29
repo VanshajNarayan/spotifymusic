@@ -14,6 +14,8 @@ export const DataProvider = ({ children }) => {
     popularData : [],
     selectSong : [],
     icons : false,
+    popularSearchSong : [],
+    playlistSearchSong: [],
   };
 
   const [state, dispatch] = useReducer(ReducerFxOne, initialState);
