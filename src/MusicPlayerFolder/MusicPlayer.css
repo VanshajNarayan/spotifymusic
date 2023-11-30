@@ -78,7 +78,7 @@
 .musicPlayer_Section .musicplayer_box .progressBar .parentProgress .childProgress{
   width: 0%;
   height: 0.5rem;
-  background-color: #b51111;
+  background-color: #3081D0;
   border-radius: 2rem;
 }
 
@@ -87,13 +87,17 @@
   font-size: 1.6rem;
 }
 
-.musicPlayer_Section .musicplayer_box .soundBox #range{
+.musicPlayer_Section .musicplayer_box .soundBox input[type = range]{
   max-width: 22rem;
   width: 100%;
-  height: 0.5rem;
   margin: 2rem;
   cursor: pointer;
   border-radius: 2rem;
   outline: none;
-  background: none;
+}
+
+.musicPlayer_Section .musicplayer_box .soundBox input[type = range]::-webkit-slider-runnable-track{
+  background: #fff;
+  height: 0.6rem;
+  border-radius: 50px;
 }

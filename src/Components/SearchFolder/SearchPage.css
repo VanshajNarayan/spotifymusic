@@ -1,23 +1,36 @@
 .search_section{
-  border: 2px solid red;
   margin-top: 1rem;
   position: absolute;
   width: 100%;
-  background: #fff;
   padding: 0.6rem;
+  height: 15rem;
+  overflow-y: auto;
+}
+
+.search_section::-webkit-scrollbar{
+  display: none;
+}
+
+.search_section .searchHeading{
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #03C988;
+  letter-spacing: 0.1rem;
 }
 
 .search_section .search_box{
-  border: 2px solid red;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
   background-color: #c5c1c1;
+  margin: 1rem 0rem 1rem 0rem;
 }
 
 .search_section .search_box img{
-  max-width: 5rem;
+  width: 4rem;
+  height: 3rem;
   object-fit: cover;
   object-position: center;
 }

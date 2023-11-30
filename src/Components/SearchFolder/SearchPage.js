@@ -4,17 +4,19 @@ import "./SearchPage.css";
 const SearchPage = () => {
   const state = useData();
   const dispatch = useDispatch();
+
+  // ! function to play search song:-
   const playSearchSong = (data) => {
     dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
     audio.src = data.audio;
     audio.play();
     dispatch({ type: "setMusicPlayerSong", payload: data });
-  }
+  };
   return (
     <>
       <section className="search_section">
-        <h3>PlayList Songs</h3>
+        <h3 className="searchHeading">PlayList Songs</h3>
         {
           state.playlistSearchSong.map((data, index) => (
 
@@ -30,7 +32,7 @@ const SearchPage = () => {
         </div>
           ))
         }
-        <h3>popularSearchSong</h3>
+        <h3 className="searchHeading">popular Song</h3>
         {
           state.popularSearchSong.map((data, index) => (
 

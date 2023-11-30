@@ -112,7 +112,6 @@
 }
 
 .HomeSection .secondBox .songBox{
-  /* border: 2px solid red; */
   margin-top: 1rem;
   display: flex;
   align-items: center;
@@ -124,7 +123,6 @@
 }
 
 .HomeSection .secondBox .songBox .popularSongPoster{
-  /* border: 2px solid rgb(255, 241, 47); */
   margin-right: 2rem;
 }
 

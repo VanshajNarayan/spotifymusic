@@ -1,12 +1,12 @@
 import "./Home.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useData, useDispatch } from "../ContextFolder/ContextOne";
-import { useEffect , useState } from "react";
+import { useState } from "react";
 import SearchPage from "../SearchFolder/SearchPage";
 
 const Home = () => {
   const [inputValue, setInputValue ] = useState('');
-  const [value, setValue ] = useState('');
+  // const [value, setValue ] = useState('');
   const state = useData();
   const dispatch = useDispatch();
   const artistpic = (state.allMusicData.map((data) => data.photo));
@@ -33,17 +33,17 @@ const Home = () => {
   // ! function to search the songs:-
   function handleSearch(e) {
     setInputValue(e.target.value);
-    dispatch({ type: "searchSong", payload: value });
+    dispatch({ type: "searchSong", payload: e.target.value });
   };
 
   // ! Implement Debouncing function:-
-  useEffect(() => { 
-    let timeoutId = setTimeout(() => { 
-      setValue(inputValue);
-    }, 1000);
+  // useEffect(() => { 
+  //   let timeoutId = setTimeout(() => { 
+  //     setValue(inputValue);
+  //   }, 1000);
 
-    return () => clearTimeout(timeoutId);
-  }, [inputValue]);
+  //   return () => clearTimeout(timeoutId);
+  // }, [inputValue]);
 
 
   // ! jsx part
@@ -54,7 +54,7 @@ const Home = () => {
           <div className="searchBox">
             <AiOutlineSearch className="searchIcon" />
             <input type="text" placeholder="Search" value={inputValue} onChange={(e) => handleSearch(e)} />
-            { value !== '' &&  <SearchPage/>}
+            { inputValue !== '' &&  <SearchPage/>}
           </div>
           {
             state.selectedData.map((data, index) => (
