@@ -9,12 +9,20 @@ import {
 } from "react-icons/md";
 import { AiOutlineSound } from "react-icons/ai";
 import { CiVolumeMute } from "react-icons/ci";
+import { TfiLoop } from "react-icons/tfi";
+import { IoMdShuffle  } from "react-icons/io";
 import { useData, useDispatch } from "../Components/ContextFolder/ContextOne";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const MusicPlayer = () => {
+
   const [range, setRange] = useState(75);
+
   const [show, setShow] = useState(false);
+
+  let songSelectionIcon = useRef("looplist");
+
+  let [selectionIcon, setSelectionIcon] = useState(songSelectionIcon.current);
 
   const state = useData();
   const dispatch = useDispatch();
@@ -80,18 +88,28 @@ const MusicPlayer = () => {
 
   // ! function to next play the song:-
   const handleNext = () => {
+    let x = Math.floor(Math.random() * 8) + 1;
+    let y = Math.floor(Math.random() * 18) + 1;
     dispatch({ type: "setPlayIcon" });
-    dispatch({ type: "playNextSong", payload: state.selectSong });
+    dispatch({ type: "playNextSong", payload: {selectSong: state.selectSong, selectionIcon:selectionIcon, x:x, y:y} });
     let newData = null;
     if (state.playListData.includes(state.selectSong)) {
       let indexNum = state.playListData.indexOf(state.selectSong);
       if (indexNum !== 9) {
-        newData = state.playListData[indexNum + 1];
+        if (selectionIcon === "shuffle") {
+          newData = state.playListData[x];
+        } else {
+          newData = state.playListData[indexNum + 1];
+        };
       };
     } else if (state.popularData.includes(state.selectSong)) {
       let indexNum = state.popularData.indexOf(state.selectSong);
       if (indexNum !== 19) {
-        newData = state.popularData[indexNum + 1];
+        if (selectionIcon === "shuffle") {
+          newData = state.popularData[y];
+        } else {
+          newData = state.popularData[indexNum + 1];
+        };
       };
     };
     if (newData !== null) {
@@ -103,18 +121,28 @@ const MusicPlayer = () => {
 
   // ! function to previous play the song:-
   const handlePrevious = () => {
+    let x = Math.floor(Math.random() * 8) + 1;
+    let y = Math.floor(Math.random() * 18) + 1;
     dispatch({ type: "setPlayIcon" });
-    dispatch({ type: "playPreviousSong", payload: state.selectSong });
+    dispatch({ type: "playPreviousSong", payload: {selectSong: state.selectSong, selectionIcon:selectionIcon, x:x, y:y} });
     let newData = null;
     if (state.playListData.includes(state.selectSong)) {
       let indexNum = state.playListData.indexOf(state.selectSong);
       if (indexNum > 0) {
-        newData = state.playListData[indexNum - 1];
+        if (selectionIcon === "shuffle") {
+          newData = state.playListData[x];
+        } else {
+          newData = state.playListData[indexNum - 1];
+        };
       };
     } else if (state.popularData.includes(state.selectSong)) {
       let indexNum = state.popularData.indexOf(state.selectSong);
       if (indexNum > 0) {
-        newData = state.popularData[indexNum - 1];
+        if (selectionIcon === "shuffle") {
+          newData = state.popularData[y];
+        } else {
+          newData = state.popularData[indexNum - 1];
+        };
       };
     };
     if (newData !== null) {
@@ -122,6 +150,18 @@ const MusicPlayer = () => {
       audio.src = newData.audio;
       audio.play();
     };
+  };
+
+  const handleLoop = () => {
+    setSelectionIcon('loop');
+  };
+
+  const handleLoopList = () => {
+    setSelectionIcon('looplist');
+  };
+
+  const handleShuffle = () => {
+    setSelectionIcon('shuffle');
   };
 
   // ! function to sound volume:-
@@ -148,6 +188,17 @@ const MusicPlayer = () => {
     audio.volume = inputRange.value / 100;
   };
 
+  // ! function to loop and ended song:-
+  const handleEnded = () => {
+    if (selectionIcon === "loop") {
+      const audio = document.querySelector("audio");
+      audio.src = state.selectSong.audio;
+      audio.play();
+    } else {
+      handleNext();
+    };
+  };
+
   // ! Jsx part
   return (
     <>
@@ -165,12 +216,20 @@ const MusicPlayer = () => {
               <p className="songName"> {state.selectSong.songName} </p>
               <p className="artistName"> {state.selectSong.artistName} </p>
             </div>
-            <audio onTimeUpdate={TimeUpdate} onEnded={() => handleNext()} ></audio>
+            <audio onTimeUpdate={TimeUpdate} onEnded={handleEnded} ></audio>
           </div>
 
           <div className="musicIons music_box">
-            <MdLoop className="loopIcons" />
-            <MdCloudDownload className="downloadIcon" />
+
+            {
+              selectionIcon === "looplist" ?
+              (<TfiLoop className="loopIcons" title="Loop List" onClick={handleLoop} />) :
+              selectionIcon === "loop" ?
+              (<MdLoop className="loopIcons" title="Loop" onClick={handleShuffle} />) :
+              (<IoMdShuffle  className="loopIcons" title="shuffle" onClick={handleLoopList} />)
+            }
+            
+            <a href = {state.selectSong.audio} download={state.selectSong.audio}> <MdCloudDownload className="downloadIcon" /> </a>
             <MdSkipPrevious className="prevIcon" onClick={() => handlePrevious()} />
             {
               state.icons === true ? <MdOutlinePause className="playIcon" onClick={handlePause} /> : <MdPlayArrow className="playIcon" onClick={handlePlay} />

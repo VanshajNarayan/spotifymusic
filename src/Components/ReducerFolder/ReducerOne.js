@@ -35,15 +35,23 @@ export const ReducerFxOne = (state, action) => {
 
     case "playNextSong":
       let nextData = null;
-      if (state.playListData.includes(action.payload)) {
-        let indexNum = state.playListData.indexOf(action.payload);
+      if (state.playListData.includes(action.payload.selectSong)) {
+        let indexNum = state.playListData.indexOf(action.payload.selectSong);
         if (indexNum !== 9) {
-          nextData = state.playListData[indexNum + 1];
+          if (action.payload.selectionIcon === "shuffle") {
+            nextData = state.playListData[action.payload.x];
+          } else {
+            nextData = state.playListData[indexNum + 1];
+          };
         };
-      } else if (state.popularData.includes(action.payload)) {
-        let indexNum = state.popularData.indexOf(action.payload);
+      } else if (state.popularData.includes(action.payload.selectSong)) {
+        let indexNum = state.popularData.indexOf(action.payload.selectSong);
         if (indexNum !== 19) {
-          nextData = state.popularData[indexNum + 1];
+          if (action.payload.selectionIcon === "shuffle") {
+            nextData = state.popularData[action.payload.y];
+          } else {
+            nextData = state.popularData[indexNum + 1];
+          };
         };
       };
       if (nextData !== null) {
@@ -70,15 +78,23 @@ export const ReducerFxOne = (state, action) => {
       // eslint-disable-next-line
     case "playPreviousSong":
       let nextDataSong = null;
-      if (state.playListData.includes(action.payload)) {
-        let indexNum = state.playListData.indexOf(action.payload);
+      if (state.playListData.includes(action.payload.selectSong)) {
+        let indexNum = state.playListData.indexOf(action.payload.selectSong);
         if (indexNum > 0) {
-          nextDataSong = state.playListData[indexNum - 1];
+          if (action.payload.selectionIcon === "shuffle") {
+            nextDataSong = state.playListData[action.payload.x];
+          } else {
+            nextDataSong = state.playListData[indexNum - 1];
+          };
         };
-      } else if (state.popularData.includes(action.payload)) {
-        let indexNum = state.popularData.indexOf(action.payload);
+      } else if (state.popularData.includes(action.payload.selectSong)) {
+        let indexNum = state.popularData.indexOf(action.payload.selectSong);
         if (indexNum > 0) {
-          nextDataSong = state.popularData[indexNum - 1];
+          if (action.payload.selectionIcon === "shuffle") {
+            nextDataSong = state.popularData[action.payload.y];
+          } else {
+            nextDataSong = state.popularData[indexNum - 1];
+          };
         };
       };
       if (nextDataSong !== null) {
