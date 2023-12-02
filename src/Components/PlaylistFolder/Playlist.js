@@ -1,18 +1,10 @@
-import { useState } from "react";
 import "./Playlist.css";
-import { MdPlayArrow, MdOutlinePause } from "react-icons/md";
+import { MdPlayArrow } from "react-icons/md";
 import { useData, useDispatch } from "../ContextFolder/ContextOne";
 
 const Playlist = () => {
   const state = useData();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const handlePause = () => {
-    setShow(!show);
-  };
-  const handleplay = () => {
-    setShow(!show);
-  };
   const playlistSongPlay = (data) => {
     dispatch({ type: "setPlayIcon" });
     const audio = document.querySelector("audio");
@@ -28,7 +20,7 @@ const Playlist = () => {
           {
             state.playListData.map((data, index) => (
 
-              <div className="songs_box" key={index} onClick={() => playlistSongPlay(data)} >
+              <div className="songs_box" key={index}  >
             <div className="imageAndTextPart">
               <img
                 src={data.songPoster}
@@ -41,11 +33,7 @@ const Playlist = () => {
               </div>
             </div>
             <div className="play_icons">
-              {show === true ? (
-                <MdOutlinePause className="icons" onClick={handlePause} />
-              ) : (
-                <MdPlayArrow className="icons" onClick={handleplay} />
-              )}
+                <MdPlayArrow className="icons" onClick={() => playlistSongPlay(data)} />
             </div>
           </div>
 

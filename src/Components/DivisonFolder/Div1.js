@@ -1,5 +1,4 @@
 import Navbar from "../NavbarFolder/Navbar";
-import Recently from "../RecentlyFolder/Recently";
 import "./Div1.css";
 import Home from "../HomeFolder/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -20,7 +19,6 @@ const Div1 = () => {
             <div className="box box2">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/recentlypage" element={<Recently />} />
               </Routes>
             </div>
             <div className="box box3">
