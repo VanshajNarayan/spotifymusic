@@ -229,7 +229,7 @@ const MusicPlayer = () => {
               (<IoMdShuffle  className="loopIcons" title="shuffle" onClick={handleLoopList} />)
             }
             
-            <a href = {state.selectSong.audio} download={state.selectSong.audio}> <MdCloudDownload className="downloadIcon" /> </a>
+            <a href = {state.selectSong.audio} title="Download Songs" download={state.selectSong.audio}> <MdCloudDownload className="downloadIcon" /> </a>
             <MdSkipPrevious className="prevIcon" onClick={() => handlePrevious()} />
             {
               state.icons === true ? <MdOutlinePause className="playIcon" onClick={handlePause} /> : <MdPlayArrow className="playIcon" onClick={handlePlay} />

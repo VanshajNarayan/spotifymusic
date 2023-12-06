@@ -25,6 +25,7 @@
 
 .playlist_section .playlist_box .songs_box img{
   max-width: 5rem;
+  height: 5rem;
   object-fit: cover;
   object-position: center;
   margin-right: 1rem;

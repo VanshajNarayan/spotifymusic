@@ -6,7 +6,6 @@ import SearchPage from "../SearchFolder/SearchPage";
 
 const Home = () => {
   const [inputValue, setInputValue ] = useState('');
-  // const [value, setValue ] = useState('');
   const state = useData();
   const dispatch = useDispatch();
   const artistpic = (state.allMusicData.map((data) => data.photo));
@@ -35,15 +34,6 @@ const Home = () => {
     setInputValue(e.target.value);
     dispatch({ type: "searchSong", payload: e.target.value });
   };
-
-  // ! Implement Debouncing function:-
-  // useEffect(() => { 
-  //   let timeoutId = setTimeout(() => { 
-  //     setValue(inputValue);
-  //   }, 1000);
-
-  //   return () => clearTimeout(timeoutId);
-  // }, [inputValue]);
 
 
   // ! jsx part

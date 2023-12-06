@@ -96,8 +96,8 @@
   outline: none;
 }
 
-.musicPlayer_Section .musicplayer_box .soundBox input[type = range]::-webkit-slider-runnable-track{
+/* .musicPlayer_Section .musicplayer_box .soundBox input[type = range]::-webkit-slider-runnable-track{
   background: #fff;
   height: 0.6rem;
   border-radius: 50px;
-}
+} */

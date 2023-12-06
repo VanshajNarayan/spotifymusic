@@ -93,6 +93,7 @@
 
 .HomeSection .firstBox .textAndPhoto_Section .imagePart img{
   max-width: 20rem;
+  height: 20rem;
   object-fit: cover;
   object-position: center;
 }
@@ -124,10 +125,13 @@
 
 .HomeSection .secondBox .songBox .popularSongPoster{
   margin-right: 2rem;
+  /* border: 2px solid green; */
+  height: 16rem;
 }
 
 .HomeSection .secondBox .songBox .popularSongPoster img{
   width: 12.5rem;
+  height: 12rem;
   object-fit: cover;
   object-position: center;
 }
