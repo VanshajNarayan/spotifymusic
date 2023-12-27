@@ -44,7 +44,7 @@ const Home = () => {
           <div className="searchBox">
             <AiOutlineSearch className="searchIcon" />
             <input type="text" placeholder="Search" value={inputValue} onChange={(e) => handleSearch(e)} />
-            { inputValue !== '' &&  <SearchPage/>}
+            { inputValue !== '' &&  <SearchPage setInputValue = {setInputValue} />}
           </div>
           {
             state.selectedData.map((data, index) => (

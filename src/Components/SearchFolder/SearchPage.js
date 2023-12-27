@@ -1,7 +1,7 @@
 import { useData, useDispatch } from "../ContextFolder/ContextOne";
 import "./SearchPage.css";
 
-const SearchPage = () => {
+const SearchPage = ({setInputValue}) => {
   const state = useData();
   const dispatch = useDispatch();
 
@@ -12,6 +12,7 @@ const SearchPage = () => {
     audio.src = data.audio;
     audio.play();
     dispatch({ type: "setMusicPlayerSong", payload: data });
+    setInputValue('');
   };
   return (
     <>
